@@ -18,11 +18,17 @@
 </head>
 <body>
 
-    <div style="width: 100%; height: 100%;  text-align: center; background-image: url(https://i.pinimg.com/564x/d3/a9/92/d3a992d06a9d54d11bc89a43879b2669.jpg); background-size: cover ; background-repeat: no-repeat;">
-        
+    <div style="width: 100%; height: 100%;  text-align: center;">
+        <div style="height: 35px; width: 100%; margin-top: 7px;">
+            <img src="/img_poom" alt="no img;" onclick="location.href='/????_move'" style="width: 52px; height: 35px; float: left; margin-left: 8px;">
+            <img src="/img_timeschedule" alt="no img;" onclick="location.href='/timeschedule_move'" style="width: 35px; height: 35px; float: right; margin-right: 10px;">
+            <img src="/img_bible" alt="no img;" onclick="location.href='/bible_move'" style="width: 40px; height: 35px; float: right; margin-right: 8px;">
+        </div>
+
+
         <div style="width: 100%; height: 30px;"></div>
 
-        <img src="/img" alt="no img;" style="width: 225px; height: 135px;">
+        <img src="/img_wakeup" alt="no img;" style="width: 225px; height: 135px;">
 
         <div style="width: 100%; height: 30px;"></div>
 
@@ -34,19 +40,23 @@
             <label style="font-size: 20px; font-weight: bold; margin-right: 3px; margin-right: 5px;">이름:</label>
             <input type="text" id="fname" name="fname" style="width: 70px; height: 25px; font-size: 20px;">
 
-            <input type="submit" value="GO" style="width: 40px; height: 30px; text-align: center; margin-left: 10px;">
+            <input type="submit" value="GO" style="width: 40px; height: 30px; text-align: center; margin-left: 10px; color: white; background-color: #3478F6; border-radius: 30px; outline:none;">
         </form> 
 
         
-        <div style="width: 100%; height: 50px;"></div>
+        <div style="width: 100%; height: 20px;"></div>
 
+        <div style="height: 200px; width: 90%; margin-left: 5%; margin-right: 5%; background-color: #EDEDED; border-radius: 30px;">
+            <div style="height: 20px;"></div>
+            <div style="margin-left: 0 auto; margin-right: 0 auto; font-size: 22px; font-weight: bold;">나의 달란트는?</div>
+            <div style="height: 15px;"></div>
+            <div style="height: 100px; text-align: center; margin:0 auto; display: flex; justify-content: center;">
 
-        <div style="height: 105px; text-align: center; margin:0 auto; display: flex; justify-content: center;">
-
-            <img src="https://mario.wiki.gallery/images/thumb/f/f7/NSMBU_Starcoin_Artwork.png/1200px-NSMBU_Starcoin_Artwork.png" alt="no img"
-        style="width: 90px; height: 90px; margin-top: 15px; margin-right: 32px;">
-            <h1 style="font-size: 80px; margin: 0; color: rgb(255, 255, 255); text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black; display: inline;">×  <%= num %></h1>
-            <!-- <label style="font-size: 80px;">  ×  <%= num %></label> -->
+                <img src="https://mario.wiki.gallery/images/thumb/f/f7/NSMBU_Starcoin_Artwork.png/1200px-NSMBU_Starcoin_Artwork.png" alt="no img"
+            style="width: 90px; height: 90px; margin-top: 11px; margin-right: 32px;">
+                <h1 style="font-size: 80px; margin: 0; color: rgb(255, 255, 255); text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black; display: inline;">×  <%= num %></h1>
+                <!-- <label style="font-size: 80px;">  ×  <%= num %></label> -->
+            </div>
         </div>
 
         <div style="width: 100%; height: 70px;"></div>

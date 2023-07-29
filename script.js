@@ -5,13 +5,59 @@ var fs = require('fs');
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
+app.get('/timeschedule_move', function(req, res) {
+  fs.readFile('views/timetable.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
 
-app.get('/img', function(req, res) { // wakeup 사진 보내기
+app.get('/img_timeschedule2', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/timeschedule2.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_back', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/back.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+
+
+app.get('/img_poom', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/poom.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_timeschedule', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/timeschedule.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_bible', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/bible.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+
+app.get('/img_wakeup', function(req, res) { // wakeup 사진 보내기
   fs.readFile('./image/wakeup1.png', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
     res.end(data);
   })
 });
+
+
 
 app.get('/', function(req, res) {
   res.render('index', {num: "?"}); //초기 달란트 개수 ?
