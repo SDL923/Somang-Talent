@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 app.get('/timeschedule_move', function(req, res) {
   fs.readFile('views/timetable.ejs', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
-    res.end(data);
+    res.end(data);    
   })
 });
 
@@ -19,6 +19,27 @@ app.get('/img_timeschedule2', function(req, res) { // timeschedule 사진 보내
   })
 });
 
+
+
+app.get('/market_move', function(req, res) {
+  fs.readFile('views/market.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+app.get('/img_cafe', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/cafe.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+
+
+
+
+
 app.get('/img_back', function(req, res) { // timeschedule 사진 보내기
   fs.readFile('./image/back.png', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
@@ -27,6 +48,15 @@ app.get('/img_back', function(req, res) { // timeschedule 사진 보내기
 });
 
 
+
+
+
+app.get('/img_coin', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/coin.webp', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
 
 app.get('/img_poom', function(req, res) { // timeschedule 사진 보내기
   fs.readFile('./image/poom.png', function(err,data){
@@ -58,10 +88,32 @@ app.get('/img_wakeup', function(req, res) { // wakeup 사진 보내기
 });
 
 
+app.get('/img_market', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/market.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+app.get('/img_game', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/game.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+app.get('/img_how', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/how.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+
 
 app.get('/', function(req, res) {
-  res.render('index', {num: "?"}); //초기 달란트 개수 ?
+  res.render('index', {num: "?", name: "나"}); //초기 달란트 개수 ?
 });
+
+
 
 const axios = require('axios')
 const GOOGLE_SHEET_ID = "11Tk0vKz1Hp0XT45_Dv45VXXb_X4BadZxEEPAoyCPjcQ"
@@ -84,7 +136,7 @@ app.get('/name', function(req, res){
 
       rows.forEach((row) => {
           if(row.c[0].v == somang_name && row.c[1].v == somang_year){
-            res.render('index', {num: row.c[2].v});
+            res.render('index', {num: row.c[2].v, name: '"'+somang_year+" "+somang_name+'"'});
             //console.log(row.c[2].v)
             check=1
 
@@ -102,6 +154,12 @@ app.get('/name', function(req, res){
 
   getSheetData('sheet01')
 });
+
+
+
+
+
+
 
 
 const refindSheetsData = (string) => {
