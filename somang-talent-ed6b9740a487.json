@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "somang-talent",
+  "private_key_id": "ed6b9740a4875901c8061d2e516df7d2e20268b4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDk3y1T3nCpYjC+\nL5T8bH802KiwnzUueGvWW5e+on9J3rYmFKrlVwYj4tT7fsSNlVgArrgzuO2SoO8s\n84YydOGOsOYJMtMyYA4cbNgkOr8EbntDiBGM5mCtYXF0/za4uY54llmloH4sSEwt\nzGOrZ67mVl0tOnsTpIWqZg8xbpFDZWhusVvtjIXQs+ikU6oFhI4/IQIc7sHvwH4N\nPkBHS6Eqtjsydm0A4HXq5CsDYz27x4o2ulJ2hhmoMVOF6yL+cv6QR0P7kmFzHMyc\nTHg6TNZw+FpwJA6vc/vCoj1MwUKnF4kTuzG6lTTDowo7FXl9j22bF/e9mlzF2r9u\nvQd/cqcVAgMBAAECggEADt9k1+ogypUHo1g+t3+KbaH1plKWN2Caa1nU3M289U0s\na4GU0GXtD3huTDCC78toZlT0QeIuyAQ+vp5NlmpLfQUIUck0ebXNvPGiwwnxP0W5\nq1wEffI7jpDCOW7bPLpMJJBqn210PYbuMlyxjmIktrGeiPGfrVlX2UicDKOJe4ZU\nQpqxuFM6gUig59nalS27XoVFsGDXvMX3sZnj/ny+ovBr7Q/1c6Oc8sC7raopD4SX\nrI7ermDqnd7kofULWLnEBDQu59MqDv1PQls/keDNEIBFYMAPAPKcMPSzfxvT1A7U\nu9JBrMTKnA5O74Q2LnwBVmh8rdvQ93QJqx0OocK2IQKBgQD07UYMaSD26fqn9rjE\nWHq3x9+yyjtVa54A4WANv67M+G4nlGN6EJx0gWCalxWvYd2727dPlVdd+Qgq4tRN\nyNXAWbI85DAS5dZI1m2nsO/yQTqVE3hBTyofIJLX7/oiSEvhRgNR4AzRVdgqo/jZ\nglBKrPR8/6wWE0Hs/XQrHsPptQKBgQDvOBX6UrIrXvBNrbHVbcg8+IvpI7EWbfD1\ngrGp/mTIUDautMm/T9bOwt+0SSW70Jv+xCyb7HZudCVL3xW7imURu4WWZZHkYrly\ntNAyZ9QQ4FQtYjw4UG1hIUM63/8zAwK67MgPR7ZdsojyU1eczHvQkU6PJN8+Zq0D\nH69GsiSj4QKBgCywlpVxITisXLYFCJWa51ldOO3whH8DkeLrPJGFpil0MvU52CTP\nnxyK9st+QdCsdL7wSjRVNYnKBLl+hepjeM0OEL2XjUYFdeH4bi2o1T9Is5273bdc\n8HyZfvGzsdpLgrzp/3UTAoO3vCebn65gXrIheMLOC+JDRUYuwOGVTX35AoGBAJM1\nxoCXJ0F9WQ/UVd1rg4/Ru/eqmS2eVmwfE0nzXP3QLvZwFr7+WMhAL/34DZp4k6bB\n/lmtuGvcWZ9JF0yjq/KvnVOiCZesEUc/ceey8VO5WNPc4gYdqFHfcEno0lkH/0Qc\ntjiA/v7GAXRuSToatA7zfI6mOCNkeA+2DdzJf7bBAoGBAM4BnNGg26Gg3IvUhdXM\nbS99JPJup9tdBH+lhEbdwS4UJnTiVWmFSzTG1/1BoJOpOu2JE6LaI4WBiE8msgrv\n9wOVms+3jZ0ltttl2ettENlZdWvrtysfigxri8CROfIuJQbxjF1hh5aaC7LR4i/v\nqdukOAfNCf6HSn/BDIoG109+\n-----END PRIVATE KEY-----\n",
+  "client_email": "somang-talent@somang-talent.iam.gserviceaccount.com",
+  "client_id": "103259605224445085914",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/somang-talent%40somang-talent.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
