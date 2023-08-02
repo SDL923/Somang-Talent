@@ -63,17 +63,190 @@ app.get('/emoji1_move', function(req, res) { //emoji1.ejs 들어가기
 
 
 app.get('/emoji1_answer', function(req, res){
+  let answer1="노아";
+  let answer2="베드로";
+  let answer3="삼손";
+
   let input_emoji1_1 = req.query.emoji1_1;
   let input_emoji1_2 = req.query.emoji1_2;
   let input_emoji1_3 = req.query.emoji1_3;
 
-  if(input_emoji1_1=="aa" && input_emoji1_2=="aa" && input_emoji1_3=="aa"){
-    res.send("<script>alert('🥳 정답입니다!!! 🥳\\n\\n5달란트가 적립됩니다.'); history.back();</script>");
-    //res.send("<script>swal('로그인 성공!', 'Aaa', 'success'); history.back();</script>");
+  if(google_sheet_row_num==-1){
+    res.send("<script>alert('❗홈 화면에 올바른 학번과 이름을 입력해주세요.'); history.back();</script>");
+  }else{
+    if(emoji_num==0 || emoji_num==2 || emoji_num==3 || emoji_num==6){
+      if(input_emoji1_1==answer1 && input_emoji1_2==answer2 && input_emoji1_3==answer3){
+        res.send("<script>alert('🥳 정답입니다!!! 🥳\\n\\n1달란트가 적립됩니다.'); history.back();</script>");
+        if(emoji_num==0){
+          changeSheetData(1,1);
+        }else if(emoji_num==2){
+          changeSheetData(1,4);
+        }else if(emoji_num==3){
+          changeSheetData(1,5);
+        }else if(emoji_num==6){
+          changeSheetData(1,7);
+        }
+        
+      }else if(input_emoji1_1!=answer1 && input_emoji1_2==answer2 && input_emoji1_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji1_1==answer1 && input_emoji1_2!=answer2 && input_emoji1_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji1_1==answer1 && input_emoji1_2==answer2 && input_emoji1_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji1_1!=answer1 && input_emoji1_2!=answer2 && input_emoji1_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji1_1!=answer1 && input_emoji1_2==answer2 && input_emoji1_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji1_1==answer1 && input_emoji1_2!=answer2 && input_emoji1_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }else{
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }
+    }else{
+      res.send("<script>alert('🚫 이미 적립된 문제입니다.'); history.back();</script>");
+    }
   }
+});
 
-  changeSheetData();
+app.get('/img_emoji1_question', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/emoji1.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
 
+//-------------------------------
+
+//---------- emoji2 ----------
+app.get('/emoji2_move', function(req, res) { //emoji1.ejs 들어가기
+  
+  fs.readFile('views/emoji2.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+
+  //res.render('emoji1', {emoji1_1: " ", emoji1_2: " ", emoji1_3: " "}); (둘이상 응답 둘이상 응답)  
+});
+
+
+app.get('/emoji2_answer', function(req, res){
+  let answer1="아브라함";
+  let answer2="다윗";
+  let answer3="솔로몬";
+
+  let input_emoji2_1 = req.query.emoji2_1;
+  let input_emoji2_2 = req.query.emoji2_2;
+  let input_emoji2_3 = req.query.emoji2_3;
+
+  if(google_sheet_row_num==-1){
+    res.send("<script>alert('❗홈 화면에 올바른 학번과 이름을 입력해주세요.'); history.back();</script>");
+  }else{
+    if(emoji_num==0 || emoji_num==1 || emoji_num==3 || emoji_num==5){
+      if(input_emoji2_1==answer1 && input_emoji2_2==answer2 && input_emoji2_3==answer3){
+        res.send("<script>alert('🥳 정답입니다!!! 🥳\\n\\n3달란트가 적립됩니다.'); history.back();</script>");
+        if(emoji_num==0){
+          changeSheetData(3,2);
+        }else if(emoji_num==1){
+          changeSheetData(3,4);
+        }else if(emoji_num==3){
+          changeSheetData(3,6);
+        }else if(emoji_num==5){
+          changeSheetData(3,7);
+        }
+        
+      }else if(input_emoji2_1!=answer1 && input_emoji2_2==answer2 && input_emoji2_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji2_1==answer1 && input_emoji2_2!=answer2 && input_emoji2_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji2_1==answer1 && input_emoji2_2==answer2 && input_emoji2_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji2_1!=answer1 && input_emoji2_2!=answer2 && input_emoji2_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji2_1!=answer1 && input_emoji2_2==answer2 && input_emoji2_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji2_1==answer1 && input_emoji2_2!=answer2 && input_emoji2_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }else{
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }
+    }else{
+      res.send("<script>alert('🚫 이미 적립된 문제입니다.'); history.back();</script>");
+    }
+  }
+});
+
+app.get('/img_emoji2_question', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/emoji2.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+//-------------------------------
+
+//---------- emoji3 ----------
+app.get('/emoji3_move', function(req, res) { //emoji3.ejs 들어가기
+  
+  fs.readFile('views/emoji3.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+
+  //res.render('emoji1', {emoji1_1: " ", emoji1_2: " ", emoji1_3: " "}); (둘이상 응답 둘이상 응답)  
+});
+
+
+app.get('/emoji3_answer', function(req, res){
+  let answer1="야엘";
+  let answer2="엘리야";
+  let answer3="요나";
+
+  let input_emoji3_1 = req.query.emoji3_1;
+  let input_emoji3_2 = req.query.emoji3_2;
+  let input_emoji3_3 = req.query.emoji3_3;
+
+  if(google_sheet_row_num==-1){
+    res.send("<script>alert('❗홈 화면에 올바른 학번과 이름을 입력해주세요.'); history.back();</script>");
+  }else{
+    if(emoji_num==0 || emoji_num==1 || emoji_num==2 || emoji_num==4){
+      if(input_emoji3_1==answer1 && input_emoji3_2==answer2 && input_emoji3_3==answer3){
+        res.send("<script>alert('🥳 정답입니다!!! 🥳\\n\\n5달란트가 적립됩니다.'); history.back();</script>");
+        if(emoji_num==0){
+          changeSheetData(5,3);
+        }else if(emoji_num==1){
+          changeSheetData(5,5);
+        }else if(emoji_num==2){
+          changeSheetData(5,6);
+        }else if(emoji_num==4){
+          changeSheetData(5,7);
+        }
+        
+      }else if(input_emoji3_1!=answer1 && input_emoji3_2==answer2 && input_emoji3_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji3_1==answer1 && input_emoji3_2!=answer2 && input_emoji3_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji3_1==answer1 && input_emoji3_2==answer2 && input_emoji3_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji3_1!=answer1 && input_emoji3_2!=answer2 && input_emoji3_3==answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ✅'); history.back();</script>");
+      }else if(input_emoji3_1!=answer1 && input_emoji3_2==answer2 && input_emoji3_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ✅\\n3번: ❌'); history.back();</script>");
+      }else if(input_emoji3_1==answer1 && input_emoji3_2!=answer2 && input_emoji3_3!=answer3){
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ✅\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }else{
+        res.send("<script>alert('[제출 결과]\\n\\n1번: ❌\\n2번: ❌\\n3번: ❌'); history.back();</script>");
+      }
+    }else{
+      res.send("<script>alert('🚫 이미 적립된 문제입니다.'); history.back();</script>");
+    }
+  }
+});
+
+app.get('/img_emoji3_question', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/emoji3.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
 });
 
 //-------------------------------
@@ -191,7 +364,7 @@ app.get('/name', function(req, res){
           }
           rowCount++;
       })
-      console.log(google_sheet_row_num)
+      //console.log(google_sheet_row_num)
       if(check==0){ //없는 이름
         res.send("<script>alert('No Information Found.'); history.back();</script>");
       }
@@ -217,7 +390,7 @@ const refindSheetsData = (string) => {
 
 
 
-async function changeSheetData() { //구글스프레드시트 에서 정보를 가져올때는 다른 방법 (axios)를 사용했다. 여기 사용한 방법으로 정보를 가져오면 더 깔끔하게 될 듯
+async function changeSheetData(add_talent, emoji_num) { //구글스프레드시트 에서 정보를 가져올때는 다른 방법 (axios)를 사용했다. 여기 사용한 방법으로 정보를 가져오면 더 깔끔하게 될 듯
   const { google } = require('googleapis');
   const sheets = google.sheets('v4');
   const SPREADSHEET_ID = '11Tk0vKz1Hp0XT45_Dv45VXXb_X4BadZxEEPAoyCPjcQ';
@@ -238,14 +411,14 @@ async function changeSheetData() { //구글스프레드시트 에서 정보를 �
     // Example: Edit cell A1 with the new value 'Hello, World!'
     await sheetsInstance.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
-      range: 'main!'+'C'+google_sheet_row_num, // Specify the cell you want to update (e.g., 'Sheet1' is the sheet name, and 'A1' is the cell).
+      range: 'main!'+'C'+google_sheet_row_num+':'+'D'+google_sheet_row_num, // Specify the cell you want to update (e.g., 'Sheet1' is the sheet name, and 'A1' is the cell).
       valueInputOption: 'RAW',
       resource: {
-        values: [[somang_talent+5]], // The new value you want to set in the cell.
+        values: [[somang_talent+add_talent, emoji_num]], // The new value you want to set in the cell.
       },
     });
 
-    console.log('Cell A1 has been updated successfully.');
+    //console.log('Cell A1 has been updated successfully.');
   } catch (err) {
     console.error('Error updating cell:', err);
   }
