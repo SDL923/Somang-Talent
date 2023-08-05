@@ -15,6 +15,15 @@ let google_sheet_row_num=-1;
 let name_check=0;
 
 
+//---------- url 대표사진 ----------
+app.get('/img_url', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/wakeup1.jpg', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+//-------------------------------
+
 
 //---------- timetable ----------
 app.get('/timeschedule_move', function(req, res) {
@@ -42,12 +51,30 @@ app.get('/market_move', function(req, res) {
   })
 });
 
-app.get('/img_cafe', function(req, res) { // timeschedule 사진 보내기
+app.get('/img_cafe', function(req, res) { // 아메리카노 사진 보내기
   fs.readFile('./image/cafe.png', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
     res.end(data);
   })
 });
+
+app.get('/img_carmera', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/carmera.jpg', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+//-------------------------------
+
+//---------- information ----------
+app.get('/informaion_move', function(req, res) {
+  fs.readFile('views/information.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+
 //-------------------------------
 
 
@@ -543,8 +570,8 @@ app.get('/img_game', function(req, res) { // timeschedule 사진 보내기
     res.end(data);
   })
 });
-app.get('/img_how', function(req, res) { // timeschedule 사진 보내기
-  fs.readFile('./image/how.png', function(err,data){
+app.get('/img_information', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/information.png', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
     res.end(data);
   })
