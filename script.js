@@ -42,6 +42,34 @@ app.get('/img_timeschedule2', function(req, res) { // timeschedule 사진 보내
 
 //-------------------------------
 
+//---------- bible ----------
+app.get('/bible_move', function(req, res) {
+  fs.readFile('views/bible.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+app.get('/bible_line1_move', function(req, res) { //emoji1.ejs 들어가기
+  
+  fs.readFile('views/bible_line1.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+app.get('/bible_line2_move', function(req, res) { //emoji1.ejs 들어가기
+  
+  fs.readFile('views/bible_line2.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+
+
+//-------------------------------
+
 
 //---------- market ----------
 app.get('/market_move', function(req, res) {
@@ -510,6 +538,8 @@ app.get('/img_emoji3_question', function(req, res) { // timeschedule 사진 보�
 });
 
 //-------------------------------
+
+
 
 
 app.get('/img_back', function(req, res) { // timeschedule 사진 보내기
