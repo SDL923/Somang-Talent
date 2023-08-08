@@ -6,7 +6,6 @@ var fs = require('fs');
 app.set('view engine', 'ejs');
 
 
-
 let somang_name;
 let somang_year;
 let somang_talent;
