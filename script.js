@@ -12,6 +12,10 @@ let somang_talent;
 let emoji_num;
 let google_sheet_row_num=-1;
 let name_check=0;
+//treasure
+let treasure_check=-1;
+let treasure_google_sheet_row_num=-1;
+
 
 
 //---------- url 대표사진 ----------
@@ -80,6 +84,56 @@ app.get('/market_move', function(req, res) {
 
 app.get('/img_cafe', function(req, res) { // 아메리카노 사진 보내기
   fs.readFile('./image/cafe.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_syg_snack', function(req, res) { // 아메리카노 사진 보내기
+  fs.readFile('./image/syg_snack.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_syg_hand', function(req, res) { // 아메리카노 사진 보내기
+  fs.readFile('./image/syg_hand.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+
+app.get('/img_sports_album_small', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/sports_album_small.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_sports_album_large', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/sports_album_large.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_squidgame_album', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/squidgame_album.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+})
+
+app.get('/img_aespa_album', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/aespa_album.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_itzy_album', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/itzy_album.png', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
     res.end(data);
   })
@@ -394,25 +448,25 @@ app.get('/emoji3_move', function(req, res) { //emoji3.ejs 들어가기
 
 
 
-app.get('/img_emoji1_question', function(req, res) { // timeschedule 사진 보내기
-  fs.readFile('./image/emoji1.png', function(err,data){
-    res.writeHead(200, {'Context-Type':'text/html'});
-    res.end(data);
-  })
-});
+// app.get('/img_emoji1_question', function(req, res) { // timeschedule 사진 보내기
+//   fs.readFile('./image/emoji1.png', function(err,data){
+//     res.writeHead(200, {'Context-Type':'text/html'});
+//     res.end(data);
+//   })
+// });
 
-//-------------------------------
+// //-------------------------------
 
-//---------- emoji2 ----------
-app.get('/emoji2_move', function(req, res) { //emoji1.ejs 들어가기
+// //---------- emoji3 ----------
+// app.get('/emoji2_move', function(req, res) { //emoji1.ejs 들어가기
   
-  fs.readFile('views/emoji2.ejs', function(err,data){
-    res.writeHead(200, {'Context-Type':'text/html'});
-    res.end(data);    
-  })
+//   fs.readFile('views/emoji2.ejs', function(err,data){
+//     res.writeHead(200, {'Context-Type':'text/html'});
+//     res.end(data);    
+//   })
 
-  //res.render('emoji1', {emoji1_1: " ", emoji1_2: " ", emoji1_3: " "}); (둘이상 응답 둘이상 응답)  
-});
+//   //res.render('emoji1', {emoji1_1: " ", emoji1_2: " ", emoji1_3: " "}); (둘이상 응답 둘이상 응답)  
+// });
 
 
 
@@ -538,6 +592,74 @@ app.get('/img_emoji3_question', function(req, res) { // timeschedule 사진 보�
 
 //-------------------------------
 
+
+//---------- treasure ----------
+app.get('/treasure_answer', function(req, res){
+
+  let input_code = req.query.treasure_code;
+  let input_name = req.query.quiz_name;
+  let input_year = req.query.quiz_year;
+  console.log(input_code)
+  
+  if(input_code=="aaa" || input_code=="bbb" || input_code=="ccc"){
+
+    const haha = async () => { //getSheetData2 함수를 기다리기?(동기) 위해서 비동기 함수 haha를 만들고 getSheetData2 앞에 await을 적었다.
+      try {
+        await getSheetData_treasure(input_code, "treasure")
+        //console.log(google_sheet_row_num)
+        //console.log(name_check)
+        if(treasure_check==1){
+          res.send("<script>alert('🚫 이미 적립된 코드입니다.'); history.back();</script>");
+        }else{
+
+          
+          await getSheetData2(input_name, input_year, "main")
+          //console.log(google_sheet_row_num)
+          //console.log(name_check)
+          if(name_check==0){
+            res.send("<script>alert('❗올바른 학번과 이름을 입력해주세요.'); history.back();</script>");
+          }else{
+            res.send("<script>alert('🥳 올바른 코드입니다!!! 🥳\\n\\n5달란트가 적립됩니다.'); history.back();</script>");
+            changeSheetData(5, emoji_num);
+            changeSheetData_treasure();
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    haha();
+
+  }else{
+    res.send("<script>alert('❌ 잘못된 코드입니다.'); history.back();</script>");
+  }
+
+});
+
+//-------------------------------
+
+//---------- treasure hunt ----------
+app.get('/treasure_move', function(req, res) {
+  fs.readFile('views/treasure.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+//-------------------------------
 
 
 
@@ -672,8 +794,6 @@ app.get('/name', function(req, res){
 
 
 
-
-
 const getSheetData2 = async (somang_name, somang_year, sheetName) => {
   const axios = require('axios');
   const GOOGLE_SHEET_ID = "11Tk0vKz1Hp0XT45_Dv45VXXb_X4BadZxEEPAoyCPjcQ"
@@ -694,6 +814,43 @@ const getSheetData2 = async (somang_name, somang_year, sheetName) => {
           somang_talent=row.c[2].v //단란트 개수 조회
           emoji_num=row.c[3].v //이모지 숫자 조회(상중하 뭐 풀었는지)
           google_sheet_row_num=rowCount //스프레드시트에서 몇번째 줄에 있는지 
+          check=1
+        }
+        rowCount++;
+    })
+    //console.log(google_sheet_row_num)
+    if(check==0){ //없는 이름
+      //res.send("<script>alert('No Information Found.'); history.back();</script>");
+      name_check=0; //이름 죄회했는데 없음
+    }else{
+      name_check=1;
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// treasure의 정보 가져오기
+const getSheetData_treasure = async (input_code, sheetName) => {
+  const axios = require('axios');
+  const GOOGLE_SHEET_ID = "11Tk0vKz1Hp0XT45_Dv45VXXb_X4BadZxEEPAoyCPjcQ"
+   
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?sheet=${sheetName}`,
+    })
+
+    const { cols, rows } = refindSheetsData(data)
+    
+    let check=0;
+    let rowCount=2; //2행부터 시작
+
+    rows.forEach((row) => {
+        if(row.c[0].v == input_code){
+          treasure_check=row.c[1].v //단란트 개수 조회
+          treasure_google_sheet_row_num=rowCount //스프레드시트에서 몇번째 줄에 있는지 
           check=1
         }
         rowCount++;
@@ -759,6 +916,43 @@ async function changeSheetData(add_talent, emoji_num) { //구글스프레드시�
     console.error('Error updating cell:', err);
   }
 }
+
+
+// 지금까지 안쓰인 코드가 입력됨면, 스프레드시트 treasure페이지에 코드번호의 check란의 0을 1로 바꾼다 
+async function changeSheetData_treasure() { //구글스프레드시트 에서 정보를 가져올때는 다른 방법 (axios)를 사용했다. 여기 사용한 방법으로 정보를 가져오면 더 깔끔하게 될 듯
+  const { google } = require('googleapis');
+  const sheets = google.sheets('v4');
+  const SPREADSHEET_ID = '11Tk0vKz1Hp0XT45_Dv45VXXb_X4BadZxEEPAoyCPjcQ';
+  const SERVICE_ACCOUNT_KEY = require('./somang-talent-ed6b9740a487.json');
+
+  try {
+    // Authorize the client using the service account credentials
+    const authClient = new google.auth.JWT(
+      SERVICE_ACCOUNT_KEY.client_email,
+      null,
+      SERVICE_ACCOUNT_KEY.private_key,
+      ['https://www.googleapis.com/auth/spreadsheets']
+    );
+
+    // Connect to the Google Sheets API
+    const sheetsInstance = google.sheets({ version: 'v4', auth: authClient });
+
+    // Example: Edit cell A1 with the new value 'Hello, World!'
+    await sheetsInstance.spreadsheets.values.update({
+      spreadsheetId: SPREADSHEET_ID,
+      range: 'treasure!'+'B'+treasure_google_sheet_row_num, // Specify the cell you want to update (e.g., 'Sheet1' is the sheet name, and 'A1' is the cell).
+      valueInputOption: 'RAW',
+      resource: {
+        values: [[1]], // The new value you want to set in the cell.
+      },
+    });
+
+    //console.log('Cell A1 has been updated successfully.');
+  } catch (err) {
+    console.error('Error updating cell:', err);
+  }
+}
+
 
 
 
