@@ -620,8 +620,8 @@ app.get('/treasure_answer', function(req, res){
             res.send("<script>alert('❗올바른 학번과 이름을 입력해주세요.'); history.back();</script>");
           }else{
             res.send("<script>alert('🥳 올바른 코드입니다!!! 🥳\\n\\n5달란트가 적립됩니다.'); history.back();</script>");
-            changeSheetData(5, emoji_num);
-            changeSheetData_treasure();
+            await changeSheetData(5, emoji_num);
+            await changeSheetData_treasure();
 
           }
 
