@@ -139,6 +139,20 @@ app.get('/img_itzy_album', function(req, res) { // 일회용 카메라 사진 �
   })
 });
 
+app.get('/img_starbucks_small', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/starbucks2.jpg', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_starbucks_big', function(req, res) { // 일회용 카메라 사진 보내기
+  fs.readFile('./image/starbucks3.jpg', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
 app.get('/img_carmera', function(req, res) { // 일회용 카메라 사진 보내기
   fs.readFile('./image/carmera.jpg', function(err,data){
     res.writeHead(200, {'Context-Type':'text/html'});
@@ -625,13 +639,7 @@ app.get('/treasure_answer', function(req, res){
 
           }
 
-
-
-
-
-
-
-
+          
 
 
 
@@ -659,6 +667,47 @@ app.get('/treasure_move', function(req, res) {
     res.end(data);    
   })
 });
+//-------------------------------
+
+//---------- playlist ----------
+app.get('/playlist_move', function(req, res) {
+  fs.readFile('views/playlist.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+app.get('/img_day1', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/day1.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
+app.get('/img_day2', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/day2.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+//-------------------------------
+
+
+//---------- playlist ----------
+app.get('/teacher_move', function(req, res) {
+  fs.readFile('views/teacher.ejs', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);    
+  })
+});
+
+app.get('/img_teacher2', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/teacher2.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
+
 //-------------------------------
 
 
@@ -728,7 +777,19 @@ app.get('/img_information', function(req, res) { // timeschedule 사진 보내�
   })
 });
 
+app.get('/img_teacher', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/teacher.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
 
+app.get('/img_playlist', function(req, res) { // timeschedule 사진 보내기
+  fs.readFile('./image/playlist.png', function(err,data){
+    res.writeHead(200, {'Context-Type':'text/html'});
+    res.end(data);
+  })
+});
 
 app.get('/', function(req, res) {
   res.render('index', {num: "?", name: "나"}); //초기 달란트 개수 ?
