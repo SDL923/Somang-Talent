@@ -42,7 +42,7 @@
 <img src="https://img.shields.io/badge/Amazon%20S3-569A31?style=for-the-badge&logo=Amazon%20S3&logoColor=white">
 </span>
 
-<br>
+<br><br>
 
 
 ## ✅ 주요 기능
